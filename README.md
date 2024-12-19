@@ -1,6 +1,6 @@
 # Entrega React Tienda
 
-![Entrega React Tienda](https://repository-images.githubusercontent.com/placeholder-image.png)
+![Entrega React Tienda]
 
 Este proyecto es una tienda online desarrollada con **React** como parte de la entrega final para el curso de desarrollo web. Puedes explorarla en funcionamiento visitando la [demo en Vercel](https://entrega-react-tienda.vercel.app).
 
