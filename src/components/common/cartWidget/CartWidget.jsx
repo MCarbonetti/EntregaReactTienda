@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const CartWidget = () => {
   return (
-    <Link to="/cart" style={{ position: "relative", display: "inline-block" }}>
+    <Link to= "./pages/cart/Cart.jsx" style={{ position: "relative", display: "inline-block" }}>
     <img 
       src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" 
       alt="Carrito de compras" 
