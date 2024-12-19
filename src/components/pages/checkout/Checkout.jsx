@@ -2,76 +2,96 @@ import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext";
 import { db } from "../../../firebaseConfig";
 import { addDoc, collection, updateDoc, doc } from "firebase/firestore";
+import './checkout.css';
+
 const Checkout = () => {
-    const { cart, getTotalPrice, resetCart } = useContext(CartContext);
-    const [userData, setUserData] = useState({
+  const { cart, getTotalPrice, resetCart } = useContext(CartContext);
+  const [userData, setUserData] = useState({
     nombre: "",
     userEmail: "",
     telefono: "",
-    });
+  });
 
-    const [orderId, setOrderId] = useState(null);
+  const [orderId, setOrderId] = useState(null);
 
-    const capturarDatos = (e) => {
+  const capturarDatos = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
-    };
+  };
 
-    const funcionDelFormulario = (e) => {
+  const funcionDelFormulario = (e) => {
     e.preventDefault();
-    
-    console.log("se envia a la api estos datos ", userData);
-    
+
+    console.log("Se envía a la API estos datos: ", userData);
+
     let total = getTotalPrice();
     let order = {
-        buyer: userData,
-        items: cart,
-        total,
+      buyer: userData,
+      items: cart,
+      total,
     };
+
     let ordersCollection = collection(db, "orders");
     addDoc(ordersCollection, order).then((res) => {
-        setOrderId(res.id);
-        resetCart();
+      setOrderId(res.id);
+      resetCart();
     });
 
     let productsCollection = collection(db, "products");
 
     order.items.forEach((elemento) => {
-        let refDoc = doc(productsCollection, elemento.id);
-        updateDoc(refDoc, { stock: elemento.stock - elemento.quantity });
+      let refDoc = doc(productsCollection, elemento.id);
+      updateDoc(refDoc, { stock: elemento.stock - elemento.quantity });
     });
-    };
+  };
 
-    return (
-    <div>
-        <h2>Aca el formulario de compra</h2>
-        {orderId ? (
-        <h2>Gracias por tu compra tu ticket es : {orderId}</h2>
-        ) : (
-        <form onSubmit={funcionDelFormulario}>
-            <input
+  return (
+    <div className="checkout-container">
+      {orderId ? (
+        <h2 className="order-message">
+          Gracias por tu compra, tu ticket es: <span>{orderId}</span>
+        </h2>
+      ) : (
+        <form className="checkout-form" onSubmit={funcionDelFormulario}>
+          <input
+            className="checkout-input"
             type="text"
-            placeholder="nombre"
+            placeholder="Nombre"
             name="nombre"
             onChange={capturarDatos}
-            />
-            <input
-            type="text"
-            placeholder="email"
+            required
+          />
+          <input
+            className="checkout-input"
+            type="email"
+            placeholder="Email"
             name="userEmail"
             onChange={capturarDatos}
-            />
-            <input
-            type="text"
-            placeholder="telefono"
+            required
+          />
+          <input
+            className="checkout-input"
+            type="tel"
+            placeholder="Teléfono"
             name="telefono"
             onChange={capturarDatos}
-            />
-            <button> enviar </button>
-            <button type="button"> cancelar </button>
+            required
+          />
+          <div className="checkout-buttons">
+            <button className="checkout-submit" type="submit">
+              Enviar
+            </button>
+            <button
+              className="checkout-cancel"
+              type="button"
+              onClick={() => setUserData({ nombre: "", userEmail: "", telefono: "" })}
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
-        )}
+      )}
     </div>
-    );
+  );
 };
 
 export default Checkout;

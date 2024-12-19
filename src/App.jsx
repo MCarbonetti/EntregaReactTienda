@@ -12,7 +12,7 @@ function App() {
       <CartContextProvider>
         <Navbar />
         <Routes>
-          {/* RUTAS  */}
+          
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:name" element={<ItemListContainer />} />
           <Route path="/cart" element={<Cart />} />
@@ -20,7 +20,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </CartContextProvider>
-      {/* <Footer /> */}
+      
     </BrowserRouter>
   );
 }

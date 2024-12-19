@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../../context/CartContext";
 
 const CartWidget = () => {
+  const { cart } = useContext(CartContext);
+
   return (
-    <Link to= "./pages/cart/Cart.jsx" style={{ position: "relative", display: "inline-block" }}>
+    <Link to= "/cart" style={{ position: "relative", display: "inline-block" }}>
     <img 
       src="https://cdn-icons-png.flaticon.com/512/1170/1170576.png" 
       alt="Carrito de compras" 
@@ -24,7 +28,7 @@ const CartWidget = () => {
         justifyContent: "center"
       }}
     >
-      0
+    {cart.length}
     </span>
   </Link>
   

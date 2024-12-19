@@ -44,7 +44,7 @@ const Counter = ({ product }) => {
         <button onClick={handleDecrement} style={btnStyles}>
             -
         </button>
-        <h1>{count}</h1>
+        <h1 style={{ color: 'black' }}>{count}</h1>
         <button onClick={handleIncrement} style={btnStyles}>
             +
         </button>

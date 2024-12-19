@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff; /* Azul muy claro */
+    color: #003366; /* Azul oscuro */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .checkout-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Blanco */
+    border: 2px solid #003366; /* Azul oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-message {
+    text-align: center;
+    color: #00509e; /* Azul medio */
+    font-weight: bold;
+  }
+  
+  .order-message span {
+    color: #003366; /* Azul oscuro */
+  }
+  
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .checkout-input {
+    padding: 10px;
+    border: 2px solid #003366; /* Azul oscuro */
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .checkout-input:focus {
+    outline: none;
+    border-color: #00509e; /* Azul medio */
+  }
+  
+  .checkout-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .checkout-submit,
+  .checkout-cancel {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .checkout-submit {
+    background-color: #00509e; /* Azul medio */
+    color: #ffffff; /* Blanco */
+  }
+  
+  .checkout-submit:hover {
+    background-color: #003366; /* Azul oscuro */
+  }
+  
+  .checkout-cancel {
+    background-color: #ffcccc; /* Rojo claro */
+    color: #660000; /* Rojo oscuro */
+  }
+  
+  .checkout-cancel:hover {
+    background-color: #ff9999; /* Rojo más claro */
+  }
+  
